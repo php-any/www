@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Origami - The Future of Coding</title>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            origami: {
+              bg: '#050505',
+              surface: '#0F0F11',
+              border: '#27272A',
+              cyan: '#00F0FF',
+              magenta: '#FF003C',
+              blue: '#2D5BFF',
+              text: '#E4E4E7',
+              muted: '#71717A'
+            }
+          },
+          animation: {
+            'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          },
+          typography: (theme) => ({
+            DEFAULT: {
+              css: {
+                color: theme('colors.gray.300'),
+                h1: { color: theme('colors.white') },
+                h2: { color: theme('colors.white') },
+                h3: { color: theme('colors.white') },
+                h4: { color: theme('colors.white') },
+                strong: { color: theme('colors.white') },
+                code: { color: theme('colors.origami.cyan') },
+                a: { color: theme('colors.origami.cyan') },
+                'blockquote p:first-of-type::before': { content: 'none' },
+                'blockquote p:last-of-type::after': { content: 'none' },
+              },
+            },
+          }),
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #050505;
+      color: #E4E4E7;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0F0F11;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #27272A;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3F3F46;
+    }
+
+    .glass-panel {
+      background: rgba(15, 15, 17, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(39, 39, 42, 0.5);
+    }
+  </style>
+  <!-- Go WASM Support -->
+  <script src="/wasm_exec.js"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "recharts": "https://aistudiocdn.com/recharts@^3.4.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
