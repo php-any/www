@@ -27,8 +27,16 @@ jobs:
                   go get -u github.com/php-any/origami@main
                   go mod tidy
                   GOOS=js GOARCH=wasm go build -o ../public/wasm/origami.wasm .
-                  # Copy wasm_exec.js from GOROOT to public folder
-                  cp $(go env GOROOT)/misc/wasm/wasm_exec.js ../public/wasm_exec.js
+                  # Try to locate and copy wasm_exec.js more robustly
+                  GOROOT=$(go env GOROOT)
+                  if [ -f "$GOROOT/misc/wasm/wasm_exec.js" ]; then
+                    cp "$GOROOT/misc/wasm/wasm_exec.js" ../public/wasm_exec.js
+                  elif [ -f "$GOROOT/lib/wasm/wasm_exec.js" ]; then
+                    cp "$GOROOT/lib/wasm/wasm_exec.js" ../public/wasm_exec.js
+                  else
+                    echo "Warning: wasm_exec.js not found in GOROOT. Downloading from CDN as fallback."
+                    curl -L https://cdn.jsdelivr.net/gh/golang/go@master/misc/wasm/wasm_exec.js -o ../public/wasm_exec.js
+                  fi
                   cd ..
 
             - name: Setup Node
